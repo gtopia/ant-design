@@ -6,6 +6,8 @@ const transformIgnorePatterns = [
 ];
 
 module.exports = {
+  verbose: true,
+  testURL: "http://localhost/",
   setupFiles: [
     './tests/setup.js',
   ],
@@ -43,10 +45,10 @@ module.exports = {
   snapshotSerializers: [
     'enzyme-to-json/serializer',
   ],
-  mapCoverage: true,
   globals: {
     'ts-jest': {
       tsConfigFile: './tsconfig.test.json',
     }
   },
+  testURL: 'http://localhost',
 };

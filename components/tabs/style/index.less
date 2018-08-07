@@ -207,7 +207,7 @@
   }
 
   &-large &-nav-container {
-    font-size: @font-size-lg;
+    font-size: @tabs-title-font-size-lg;
   }
 
   &-large &-tab {
@@ -215,7 +215,7 @@
   }
 
   &-small &-nav-container {
-    font-size: @font-size-base;
+    font-size: @tabs-title-font-size-sm;
   }
 
   &-small &-tab {
@@ -238,6 +238,9 @@
         height: 0;
         padding: 0 !important;
         pointer-events: none;
+        input {
+          visibility: hidden;
+        }
       }
     }
     > .@{tab-prefix-cls}-content-animated {

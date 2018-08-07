@@ -371,79 +371,175 @@ exports[`renders ./components/card/demo/inner.md correctly 1`] = `
 `;
 
 exports[`renders ./components/card/demo/loading.md correctly 1`] = `
-<div
-  class="ant-card ant-card-loading ant-card-bordered"
-  style="width:34%"
->
+<div>
   <div
-    class="ant-card-head"
+    class="ant-card ant-card-loading ant-card-bordered"
   >
     <div
-      class="ant-card-head-wrapper"
+      class="ant-card-head"
     >
       <div
-        class="ant-card-head-title"
+        class="ant-card-head-wrapper"
       >
-        Card title
+        <div
+          class="ant-card-head-title"
+        >
+          Card title
+        </div>
+      </div>
+    </div>
+    <div
+      class="ant-card-body"
+    >
+      <div
+        class="ant-card-loading-content"
+      >
+        <div
+          class="ant-row"
+          style="margin-left:-4px;margin-right:-4px"
+        >
+          <div
+            class="ant-col-22"
+            style="padding-left:4px;padding-right:4px"
+          >
+            <div
+              class="ant-card-loading-block"
+            />
+          </div>
+        </div>
+        <div
+          class="ant-row"
+          style="margin-left:-4px;margin-right:-4px"
+        >
+          <div
+            class="ant-col-8"
+            style="padding-left:4px;padding-right:4px"
+          >
+            <div
+              class="ant-card-loading-block"
+            />
+          </div>
+          <div
+            class="ant-col-15"
+            style="padding-left:4px;padding-right:4px"
+          >
+            <div
+              class="ant-card-loading-block"
+            />
+          </div>
+        </div>
+        <div
+          class="ant-row"
+          style="margin-left:-4px;margin-right:-4px"
+        >
+          <div
+            class="ant-col-6"
+            style="padding-left:4px;padding-right:4px"
+          >
+            <div
+              class="ant-card-loading-block"
+            />
+          </div>
+          <div
+            class="ant-col-18"
+            style="padding-left:4px;padding-right:4px"
+          >
+            <div
+              class="ant-card-loading-block"
+            />
+          </div>
+        </div>
+        <div
+          class="ant-row"
+          style="margin-left:-4px;margin-right:-4px"
+        >
+          <div
+            class="ant-col-13"
+            style="padding-left:4px;padding-right:4px"
+          >
+            <div
+              class="ant-card-loading-block"
+            />
+          </div>
+          <div
+            class="ant-col-9"
+            style="padding-left:4px;padding-right:4px"
+          >
+            <div
+              class="ant-card-loading-block"
+            />
+          </div>
+        </div>
+        <div
+          class="ant-row"
+          style="margin-left:-4px;margin-right:-4px"
+        >
+          <div
+            class="ant-col-4"
+            style="padding-left:4px;padding-right:4px"
+          >
+            <div
+              class="ant-card-loading-block"
+            />
+          </div>
+          <div
+            class="ant-col-3"
+            style="padding-left:4px;padding-right:4px"
+          >
+            <div
+              class="ant-card-loading-block"
+            />
+          </div>
+          <div
+            class="ant-col-16"
+            style="padding-left:4px;padding-right:4px"
+          >
+            <div
+              class="ant-card-loading-block"
+            />
+          </div>
+        </div>
+        <div
+          class="ant-row"
+          style="margin-left:-4px;margin-right:-4px"
+        >
+          <div
+            class="ant-col-8"
+            style="padding-left:4px;padding-right:4px"
+          >
+            <div
+              class="ant-card-loading-block"
+            />
+          </div>
+          <div
+            class="ant-col-6"
+            style="padding-left:4px;padding-right:4px"
+          >
+            <div
+              class="ant-card-loading-block"
+            />
+          </div>
+          <div
+            class="ant-col-8"
+            style="padding-left:4px;padding-right:4px"
+          >
+            <div
+              class="ant-card-loading-block"
+            />
+          </div>
+        </div>
       </div>
     </div>
   </div>
-  <div
-    class="ant-card-body"
+  <button
+    class="ant-btn"
+    style="margin-top:16px"
+    type="button"
   >
-    <div
-      class="ant-card-loading-content"
-    >
-      <p
-        class="ant-card-loading-block"
-        style="width:94%"
-      />
-      <p>
-        <span
-          class="ant-card-loading-block"
-          style="width:28%"
-        />
-        <span
-          class="ant-card-loading-block"
-          style="width:62%"
-        />
-      </p>
-      <p>
-        <span
-          class="ant-card-loading-block"
-          style="width:22%"
-        />
-        <span
-          class="ant-card-loading-block"
-          style="width:66%"
-        />
-      </p>
-      <p>
-        <span
-          class="ant-card-loading-block"
-          style="width:56%"
-        />
-        <span
-          class="ant-card-loading-block"
-          style="width:39%"
-        />
-      </p>
-      <p>
-        <span
-          class="ant-card-loading-block"
-          style="width:21%"
-        />
-        <span
-          class="ant-card-loading-block"
-          style="width:15%"
-        />
-        <span
-          class="ant-card-loading-block"
-          style="width:40%"
-        />
-      </p>
-    </div>
-  </div>
+    <span>
+      Toggle loading
+    </span>
+  </button>
 </div>
 `;
 
@@ -611,25 +707,27 @@ exports[`renders ./components/card/demo/tabs.md correctly 1`] = `
                 <div
                   class="ant-tabs-nav ant-tabs-nav-animated"
                 >
+                  <div>
+                    <div
+                      aria-disabled="false"
+                      aria-selected="true"
+                      class="ant-tabs-tab-active ant-tabs-tab"
+                      role="tab"
+                    >
+                      tab1
+                    </div>
+                    <div
+                      aria-disabled="false"
+                      aria-selected="false"
+                      class=" ant-tabs-tab"
+                      role="tab"
+                    >
+                      tab2
+                    </div>
+                  </div>
                   <div
                     class="ant-tabs-ink-bar ant-tabs-ink-bar-animated"
                   />
-                  <div
-                    aria-disabled="false"
-                    aria-selected="true"
-                    class="ant-tabs-tab-active ant-tabs-tab"
-                    role="tab"
-                  >
-                    tab1
-                  </div>
-                  <div
-                    aria-disabled="false"
-                    aria-selected="false"
-                    class=" ant-tabs-tab"
-                    role="tab"
-                  >
-                    tab2
-                  </div>
                 </div>
               </div>
             </div>
@@ -708,33 +806,35 @@ exports[`renders ./components/card/demo/tabs.md correctly 1`] = `
                 <div
                   class="ant-tabs-nav ant-tabs-nav-animated"
                 >
+                  <div>
+                    <div
+                      aria-disabled="false"
+                      aria-selected="false"
+                      class=" ant-tabs-tab"
+                      role="tab"
+                    >
+                      article
+                    </div>
+                    <div
+                      aria-disabled="false"
+                      aria-selected="true"
+                      class="ant-tabs-tab-active ant-tabs-tab"
+                      role="tab"
+                    >
+                      app
+                    </div>
+                    <div
+                      aria-disabled="false"
+                      aria-selected="false"
+                      class=" ant-tabs-tab"
+                      role="tab"
+                    >
+                      project
+                    </div>
+                  </div>
                   <div
                     class="ant-tabs-ink-bar ant-tabs-ink-bar-animated"
                   />
-                  <div
-                    aria-disabled="false"
-                    aria-selected="true"
-                    class="ant-tabs-tab-active ant-tabs-tab"
-                    role="tab"
-                  >
-                    article
-                  </div>
-                  <div
-                    aria-disabled="false"
-                    aria-selected="false"
-                    class=" ant-tabs-tab"
-                    role="tab"
-                  >
-                    app
-                  </div>
-                  <div
-                    aria-disabled="false"
-                    aria-selected="false"
-                    class=" ant-tabs-tab"
-                    role="tab"
-                  >
-                    project
-                  </div>
                 </div>
               </div>
             </div>
@@ -742,16 +842,16 @@ exports[`renders ./components/card/demo/tabs.md correctly 1`] = `
         </div>
         <div
           class="ant-tabs-content ant-tabs-content-animated"
-          style="margin-left:0%"
+          style="margin-left:-100%"
         >
-          <div
-            aria-hidden="false"
-            class="ant-tabs-tabpane ant-tabs-tabpane-active"
-            role="tabpanel"
-          />
           <div
             aria-hidden="true"
             class="ant-tabs-tabpane ant-tabs-tabpane-inactive"
+            role="tabpanel"
+          />
+          <div
+            aria-hidden="false"
+            class="ant-tabs-tabpane ant-tabs-tabpane-active"
             role="tabpanel"
           />
           <div
@@ -766,7 +866,7 @@ exports[`renders ./components/card/demo/tabs.md correctly 1`] = `
       class="ant-card-body"
     >
       <p>
-        article content
+        app content
       </p>
     </div>
   </div>

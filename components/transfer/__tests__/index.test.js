@@ -93,14 +93,14 @@ describe('Transfer', () => {
   it('should move selected keys to corresponding list', () => {
     const handleChange = jest.fn();
     const wrapper = mount(<Transfer {...listCommonProps} onChange={handleChange} />);
-    wrapper.find(TransferOperation).find(Button).at(1).simulate('click'); // move selected keys to right list
+    wrapper.find(TransferOperation).find(Button).at(0).simulate('click'); // move selected keys to right list
     expect(handleChange).toHaveBeenCalledWith(['a', 'b'], 'right', ['a']);
   });
 
   it('should move selected keys expect disabled to corresponding list', () => {
     const handleChange = jest.fn();
     const wrapper = mount(<Transfer {...listDisabledProps} onChange={handleChange} />);
-    wrapper.find(TransferOperation).find(Button).at(1).simulate('click'); // move selected keys to right list
+    wrapper.find(TransferOperation).find(Button).at(0).simulate('click'); // move selected keys to right list
     expect(handleChange).toHaveBeenCalledWith(['b'], 'right', ['b']);
   });
 
@@ -209,17 +209,17 @@ describe('Transfer', () => {
       .simulate('change', { target: { value: 'content2' } });
     wrapper.find(TransferList).at(0).find('.ant-transfer-list-header input[type="checkbox"]').filterWhere(n => !n.prop('checked'))
       .simulate('change');
-    wrapper.find(TransferOperation).find(Button).at(1).simulate('click');
+    wrapper.find(TransferOperation).find(Button).at(0).simulate('click');
     expect(handleChange).toHaveBeenCalledWith(['1', '3', '4'], 'right', ['1']);
   });
 
   it('should check correctly when there is a search text', () => {
-    const props = { ...listCommonProps };
-    delete props.targetKeys;
-    delete props.selectedKeys;
+    const newProps = { ...listCommonProps };
+    delete newProps.targetKeys;
+    delete newProps.selectedKeys;
     const handleSelectChange = jest.fn();
     const wrapper = mount(
-      <Transfer {...props} showSearch onSelectChange={handleSelectChange} render={item => item.title} />
+      <Transfer {...newProps} showSearch onSelectChange={handleSelectChange} render={item => item.title} />
     );
     wrapper.find(TransferItem).filterWhere(n => n.prop('item').key === 'b').simulate('click');
     expect(handleSelectChange).toHaveBeenLastCalledWith(['b'], []);
@@ -247,5 +247,29 @@ describe('Transfer', () => {
     };
     const wrapper = render(<Transfer {...sortedTargetKeyProps} render={item => item.title} />);
     expect(wrapper).toMatchSnapshot();
+  });
+
+  it('should add custom styles when their props are provided', () => {
+    const style = {
+      backgroundColor: 'red',
+    };
+    const listStyle = {
+      backgroundColor: 'blue',
+    };
+    const operationStyle = {
+      backgroundColor: 'yellow',
+    };
+
+    const component = mount(<Transfer {...listCommonProps} style={style} listStyle={listStyle} operationStyle={operationStyle} />);
+
+    const wrapper = component.find('.ant-transfer');
+    const listSource = component.find('.ant-transfer-list').first();
+    const listTarget = component.find('.ant-transfer-list').last();
+    const operation = component.find('.ant-transfer-operation').first();
+
+    expect(wrapper.prop('style')).toHaveProperty('backgroundColor', 'red');
+    expect(listSource.prop('style')).toHaveProperty('backgroundColor', 'blue');
+    expect(listTarget.prop('style')).toHaveProperty('backgroundColor', 'blue');
+    expect(operation.prop('style')).toHaveProperty('backgroundColor', 'yellow');
   });
 });
