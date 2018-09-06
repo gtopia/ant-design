@@ -1,5 +1,5 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
+import * as PropTypes from 'prop-types';
 import classNames from 'classnames';
 import createDOMForm from 'rc-form/lib/createDOMForm';
 import createFormField from 'rc-form/lib/createFormField';
@@ -74,6 +74,8 @@ export type GetFieldDecoratorOptions = {
   trigger?: string;
   /** 可以把 onChange 的参数转化为控件的值，例如 DatePicker 可设为：(date, dateString) => dateString */
   getValueFromEvent?: (...args: any[]) => any;
+  /** Get the component props according to field value. */
+  getValueProps?: (value: any) => any;
   /** 校验子节点值的时机 */
   validateTrigger?: string | string[];
   /** 校验规则，参见 [async-validator](https://github.com/yiminghe/async-validator) */
@@ -117,8 +119,8 @@ export type WrappedFormUtils = {
   isFieldsTouched(names?: Array<string>): boolean;
   /** 重置一组输入控件的值与状态，如不传入参数，则重置所有组件 */
   resetFields(names?: Array<string>): void;
-
-  getFieldDecorator(id: string, options?: GetFieldDecoratorOptions): (node: React.ReactNode) => React.ReactNode;
+  // tslint:disable-next-line:max-line-length
+  getFieldDecorator<T extends Object = {}>(id: keyof T, options?: GetFieldDecoratorOptions): (node: React.ReactNode) => React.ReactNode;
 };
 
 export interface FormComponentProps {

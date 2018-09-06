@@ -1,10 +1,11 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
+import * as PropTypes from 'prop-types';
 import RcSelect, { Option, OptGroup } from 'rc-select';
 import classNames from 'classnames';
 import LocaleReceiver from '../locale-provider/LocaleReceiver';
 import defaultLocale from '../locale-provider/default';
 import warning from 'warning';
+import Icon from '../icon';
 
 export interface AbstractSelectProps {
   prefixCls?: string;
@@ -26,8 +27,11 @@ export interface AbstractSelectProps {
   dropdownMenuStyle?: React.CSSProperties;
   dropdownMatchSelectWidth?: boolean;
   onSearch?: (value: string) => any;
+  getPopupContainer?: (triggerNode: Element) => HTMLElement;
   filterOption?: boolean | ((inputValue: string, option: React.ReactElement<OptionProps>) => any);
   id?: string;
+  open?: boolean;
+  onDropdownVisibleChange?: (open: boolean) => void;
 }
 
 export interface LabeledValue {
@@ -56,7 +60,6 @@ export interface SelectProps extends AbstractSelectProps {
   maxTagPlaceholder?: React.ReactNode | ((omittedValues: SelectValue[]) => React.ReactNode);
   optionFilterProp?: string;
   labelInValue?: boolean;
-  getPopupContainer?: (triggerNode: Element) => HTMLElement;
   tokenSeparators?: string[];
   getInputElement?: () => React.ReactElement<any>;
   autoFocus?: boolean;
@@ -171,8 +174,18 @@ export default class Select extends React.Component<SelectProps, {}> {
       combobox: this.isCombobox(),
     };
 
+    const inputIcon = (
+      <Icon type="down" className={`${prefixCls}-arrow-icon`} />
+    );
+
+    const removeIcon = (
+      <Icon type="close" className={`${prefixCls}-remove-icon`} />
+    );
+
     return (
       <RcSelect
+        inputIcon={inputIcon}
+        removeIcon={removeIcon}
         {...restProps}
         {...modeConfig}
         prefixCls={prefixCls}

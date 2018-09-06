@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { findDOMNode } from 'react-dom';
-import PropTypes from 'prop-types';
+import * as PropTypes from 'prop-types';
 import classNames from 'classnames';
+import Wave from '../_util/wave';
 import Icon from '../icon';
 import Group from './button-group';
 
@@ -48,6 +49,7 @@ export interface BaseButtonProps {
   className?: string;
   ghost?: boolean;
   block?: boolean;
+  children?: React.ReactNode;
 }
 
 export type AnchorButtonProps = {
@@ -86,14 +88,12 @@ export default class Button extends React.Component<ButtonProps, any> {
     block: PropTypes.bool,
   };
 
-  timeout: number;
-  delayTimeout: number;
+  private delayTimeout: number;
 
   constructor(props: ButtonProps) {
     super(props);
     this.state = {
       loading: props.loading,
-      clicked: false,
       hasTwoCNChar: false,
     };
   }
@@ -122,9 +122,6 @@ export default class Button extends React.Component<ButtonProps, any> {
   }
 
   componentWillUnmount() {
-    if (this.timeout) {
-      clearTimeout(this.timeout);
-    }
     if (this.delayTimeout) {
       clearTimeout(this.delayTimeout);
     }
@@ -148,12 +145,7 @@ export default class Button extends React.Component<ButtonProps, any> {
   }
 
   handleClick: React.MouseEventHandler<HTMLButtonElement | HTMLAnchorElement> = e => {
-    // Add click effect
-    this.setState({ clicked: true });
-    clearTimeout(this.timeout);
-    this.timeout = window.setTimeout(() => this.setState({ clicked: false }), 500);
-
-    const onClick = this.props.onClick;
+    const { onClick } = this.props;
     if (onClick) {
       (onClick as React.MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>)(e);
     }
@@ -169,7 +161,7 @@ export default class Button extends React.Component<ButtonProps, any> {
       type, shape, size, className, children, icon, prefixCls, ghost, loading: _loadingProp, block, ...rest
     } = this.props;
 
-    const { loading, clicked, hasTwoCNChar } = this.state;
+    const { loading, hasTwoCNChar } = this.state;
 
     // large => lg
     // small => sm
@@ -190,7 +182,6 @@ export default class Button extends React.Component<ButtonProps, any> {
       [`${prefixCls}-${sizeCls}`]: sizeCls,
       [`${prefixCls}-icon-only`]: !children && icon,
       [`${prefixCls}-loading`]: loading,
-      [`${prefixCls}-clicked`]: clicked,
       [`${prefixCls}-background-ghost`]: ghost,
       [`${prefixCls}-two-chinese-chars`]: hasTwoCNChar,
       [`${prefixCls}-block`]: block,
@@ -216,14 +207,16 @@ export default class Button extends React.Component<ButtonProps, any> {
       const { htmlType, ...otherProps } = rest;
 
       return (
-        <button
-          {...otherProps}
-          type={htmlType || 'button'}
-          className={classes}
-          onClick={this.handleClick}
-        >
-          {iconNode}{kids}
-        </button>
+        <Wave>
+          <button
+            {...otherProps}
+            type={htmlType || 'button'}
+            className={classes}
+            onClick={this.handleClick}
+          >
+            {iconNode}{kids}
+          </button>
+        </Wave>
       );
     }
   }

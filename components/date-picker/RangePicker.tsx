@@ -234,11 +234,11 @@ class RangePicker extends React.Component<any, RangePickerState> {
         </Tag>
       );
     });
-    const rangeNode = (
+    const rangeNode = (operations && operations.length > 0) ? (
       <div className={`${prefixCls}-footer-extra ${prefixCls}-range-quick-selector`} key="range">
         {operations}
       </div>
-    );
+    ) : null;
     return [rangeNode, customFooter];
   }
 
@@ -317,9 +317,10 @@ class RangePicker extends React.Component<any, RangePickerState> {
 
     const clearIcon = (!props.disabled && props.allowClear && value && (value[0] || value[1])) ? (
       <Icon
-        type="cross-circle"
+        type="close-circle"
         className={`${prefixCls}-picker-clear`}
         onClick={this.clearSelection}
+        theme="filled"
       />
     ) : null;
 
@@ -346,7 +347,7 @@ class RangePicker extends React.Component<any, RangePickerState> {
             tabIndex={-1}
           />
           {clearIcon}
-          <span className={`${prefixCls}-picker-icon`} />
+          <Icon type="calendar" className={`${prefixCls}-picker-icon`}/>
         </span>
       );
     };

@@ -61,7 +61,7 @@ describe('Upload List', () => {
       </Upload>
     );
     expect(wrapper.find('.ant-upload-list-item').length).toBe(2);
-    wrapper.find('.ant-upload-list-item').at(0).find('.anticon-cross').simulate('click');
+    wrapper.find('.ant-upload-list-item').at(0).find('.anticon-close').simulate('click');
     await delay(400);
     wrapper.update();
     expect(wrapper.find('.ant-upload-list-item').hostNodes().length).toBe(1);
@@ -261,8 +261,8 @@ describe('Upload List', () => {
       </Upload>
     );
     wrapper.setState({});
-    await delay(200);
-    expect(wrapper.state().fileList[2].thumbUrl).not.toBeFalsy();
+    await delay(0);
+    expect(wrapper.state().fileList[2].thumbUrl).not.toBe(undefined);
   });
 
   it('should non-image format file preview', () => {
@@ -323,6 +323,13 @@ describe('Upload List', () => {
         status: 'done',
         uid: '-11',
         url: 'https://cdn.xxx.com/xx.xx/aaa.png?query=some.query.with.dot',
+      },
+      {
+        name: 'image',
+        status: 'done',
+        uid: '-12',
+        url: 'https://publish-pic-cpu.baidu.com/1296beb3-50d9-4276-885f-52645cbb378e.jpeg@w_228%2ch_152',
+        type: 'image',
       },
     ];
 
